@@ -13,7 +13,7 @@
 #### Aprendemos a fazer:
 ```C
 int main(){
- printf("Hello World")
+ printf("Hello World");
 }
 ```
  
