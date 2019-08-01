@@ -11,11 +11,16 @@
 
 # 11:00 — Git -m Palestra
 #### Aprendemos a fazer:
-`int main(){
-printf("Hello World")
-}`
+```C
+int main(){
+ printf("Hello World")
+}
+```
  
 * Sugestão do iPoop
 
 # 13:50 — Fim do Almoço & Mão na massa
-* 
+* Bingo para usuário discalculistas com níveis (fácil e evoluindo, com operações matemáticas)
+
+# 14:30 - 15:00 — Sono da tarde
+* 😴
