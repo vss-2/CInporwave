@@ -11,14 +11,18 @@ router.get("/novacartela", function (req, res) {
 })
 
 router.put("/", function (req, res) {//atualizar arary de pintados da cartela pra cada clique
-    let body = req.body
+    let body = req.body//recebe um body={"clickedLine":0,"clickedColumn":0, "Numero":1   }
     let i = body.clickedLine
     let j = body.clickedColumn
-    let num = body.num
-    if (i && j && num) {
+    let num = body.Numero
+    if (i!=null && j!=null && num) {
         let acertou = cartelaModel.updateCartela(i,j,num)//retorna true se acertou o numero
-        res.send({message: "Acertou"})
+        if(acertou) res.send({message: "Acertou"})
+        else{
+            res.send({ message: "Errou o numero" })
+        }
     } else {
+        console.log(i,j,num)
         res.send({ message: "Errou" })
     }
 })

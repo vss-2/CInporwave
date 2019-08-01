@@ -2,7 +2,7 @@ let express = require("express")
 let bodyParser = require("body-parser")
 
 let app = express()
-let PORT = 3000
+let PORT = 3333
 
 let cartelaRoutes = require("./routes/cartela")
 
