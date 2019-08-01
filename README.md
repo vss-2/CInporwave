@@ -1,5 +1,3 @@
-# CInporwave
-<br />
 # Tecnologia e Acessibilidade
 * ~~Deslocamento de pessoas cegas e cadeirantes ~~
 * ~~ Comunicação de surdos / mudos / analfabetos ~~
