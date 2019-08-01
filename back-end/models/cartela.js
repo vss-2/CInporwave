@@ -36,10 +36,9 @@ function shuffleArray(array) {
 
 function createCartela(){//gerar randomicamente uma nova
    let qlinhas = 0
-while(qlinhas<2)
-   qlinhas=Math.floor((Math.random() * 10) + 1);
-   
-   let qcolunas=qlinhas
+   let qcolunas = 0
+    while(qlinhas<2) qlinhas=Math.floor((Math.random() * 10) + 1);
+    while(qcolunas<2)  qcolunas=Math.floor((Math.random() * 10) + 1);
    //console.log(qlinhas,qcolunas) ok
    let numbers=[]
    for(let i=0;i<100;i++)numbers.push(i)
@@ -68,8 +67,10 @@ while(qlinhas<2)
 function updateCartela(linha, coluna, num){
     //console.log(linha,coluna,num)
     let tab = myCartela.tabela
+    let qlinhas = myCartela.qlinhas
+    let qcolunas = myCartela.qcolunas
     //console.log(tab[0].length)
-    if(linha < tab.length && linha>=0 && coluna < tab[0].length && coluna>=0){//indice valido
+    if(linha < qlinhas && linha>=0 && coluna < qcolunas && coluna>=0){//indice valido
         let usados = myCartela.usados
         if(usados[linha][coluna]==0 && tab[linha][coluna]==num){
             console.log("acertou")
