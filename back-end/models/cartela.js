@@ -1,7 +1,8 @@
 let axios = require("axios")
 
 const auxCartela = {
-    
+    "qlinhas":5,
+    "qcolunas":5,
     "tabela":[  [1,2,3,4,5],
                 [6,7,8,9,10],
                 [11,12,13,14,15],
@@ -20,9 +21,48 @@ function getCartela(){
     return myCartela
 }
 
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
 
 function createCartela(){//gerar randomicamente uma nova
-   return myCartela = auxCartela//copia a fixa por enquanto
+   let qlinhas = 0
+while(qlinhas<2)
+   qlinhas=Math.floor((Math.random() * 10) + 1);
+   
+   let qcolunas=qlinhas
+   //console.log(qlinhas,qcolunas) ok
+   let numbers=[]
+   for(let i=0;i<100;i++)numbers.push(i)
+   let newCartela=[]
+   for(let i=0;i<qlinhas;i++){
+       let linha=[]
+       for(let j=0;j<qcolunas;j++){
+           shuffleArray(numbers)
+           linha.push(numbers.pop())
+        }
+        newCartela.push(linha)
+    }
+    
+    let newUsados=[]
+    let aux = []
+    for(let i=0;i<qcolunas;i++) aux.push(0)
+    for(let i=0;i<qlinhas;i++) newUsados.push(aux)
+   
+    myCartela.qlinhas = qlinhas
+    myCartela.qcolunas = qcolunas
+    myCartela.tabela = newCartela
+    myCartela.usados = newUsados
+    return myCartela
 }
 
 function updateCartela(linha, coluna, num){
