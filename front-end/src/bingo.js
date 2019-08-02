@@ -133,7 +133,7 @@ class Game extends React.Component {
             return;
         }
 
-        let cartela = this.updateCartela();
+        let cartela = this.updateCartela(i);
         if (cartela === 'Errou') {
             alert("Tente novamente :(");
             return;

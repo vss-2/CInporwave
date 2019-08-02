@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './AppHome.css';
-import './indexHome.css';
+//import './AppHome.css';
+//import './indexHome.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Bingo from './bingo.js';
 
@@ -32,7 +32,7 @@ class AppHome extends Component {
               <a href="" target="_blank"> Português </a>
               <a href="" target="_blank"> Matemática </a>
               <a>
-                <Route to="./bingo.js" component={Bingo}/>
+                <Route path="/bingo" component={Bingo}/>
               </a>
               <a href="" target="_blank"> Memória </a>
             </div>
