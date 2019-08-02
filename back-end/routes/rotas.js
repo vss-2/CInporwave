@@ -5,7 +5,7 @@ let numeroModel = require("../models/numero")
 let cartelaUniModel = require("../models/cartelaUni")
 
 router.get("/", function (req, res) {
-    res.send(cartelaUniModel.getCartela())//criar nova cartela
+    res.send(cartelaUniModel.getCartela())//pega cartela atual
 })
 
 router.get("/novacartela", function (req, res) {
@@ -14,24 +14,6 @@ router.get("/novacartela", function (req, res) {
     //res.send(cartelaUniModel.createCartelaRnd())//cria uma unidimensional tamanho aleatorio
     res.send(cartelaUniModel.createCartela25())//cria uma fixa de 25
 })
-
-//=========================usar esse se usar se usar cartela 2D
-// router.put("/", function (req, res) {//atualizar arary de pintados da cartela pra cada clique
-//     let body = req.body//recebe um body={"clickedLine":0,"clickedColumn":0, "Numero":1   }
-//     let i = body.clickedLine
-//     let j = body.clickedColumn
-//     let num = body.Numero
-//     if (i!=null && j!=null && num!=null) {
-//         let acertou = cartelaModel.updateCartela(i,j,num)//retorna true se acertou o numero
-//         if(acertou) res.send({message: "Acertou"})
-//         else{
-//             res.send({ message: "Errou" })
-//         }
-//     } else {
-//         console.log(i,j,num)
-//         res.send({ message: "Objeto invalido" })
-//     }
-// })
 
 //======================usar esse se usar array unidimensional cartelaUniModel
 router.put("/", function (req, res) {//atualizar arary de pintados da cartela pra cada clique

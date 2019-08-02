@@ -91,6 +91,7 @@ class Game extends React.Component {
                 this.setState({
                     squares: result.tabela
                 });
+                console.log(result.tabela)
         })
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)});
     }
@@ -100,6 +101,7 @@ class Game extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
+                console.log(result.tabela)
                 let aux = Array(25).fill(null);
                 for (let k = 0; k < 25; k ++) {
                     aux[k] = result.usados[k];
