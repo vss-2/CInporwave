@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import './index.css';
+import './AppHome.css';
+import './indexHome.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Game from './index.js';
 
-class App extends Component {
+class AppHome extends Component {
   render() {
     return (
+      <Router>
       <div className="nav">
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
@@ -27,7 +30,9 @@ class App extends Component {
             <div className="dropdownConteudo">
               <a href="" target="_blank"> Português </a>
               <a href="" target="_blank"> Matemática </a>
-              <a href="" target="_blank"> Lógica </a>
+              <a>
+                <Link to="./index.js"> Jogo </Link>
+              </a>
               <a href="" target="_blank"> Memória </a>
             </div>
           </div>
@@ -37,15 +42,31 @@ class App extends Component {
         <div className="meioTela">
           <a>CInporwave</a>
         </div>
+
       </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default AppHome; 
 
-/*
-<div className="dropdownMenu">
+/*              
+
+  <a href="" target="./index.js"> Jogo </a>
+
+        <Router>
+          <Route path="./index.js" Component={Game} />
+        </Router>
+
+  function chamarJogo(){
+    ReactDOM.render(
+      <index />,
+      document.getElementById('root')
+    )
+  }
+
+  <div className="dropdownMenu">
             <button className="dropdownBotao">Cascata</button>
             <div className="dropdownConteudo">
               <a>Português</a>
