@@ -1,6 +1,9 @@
 import React from 'react';
 import './bingo.css';
 import axios from 'axios';
+import AppHome from './AppHome.js'
+import 'index.js';
+import 'bingo.css';
 
 /*class Square extends React.Component {
     render() {
@@ -190,6 +193,7 @@ class Game extends React.Component {
       );
     }
   }
+
   
   // ========================================
   
