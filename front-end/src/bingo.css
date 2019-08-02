@@ -32,8 +32,23 @@ body {
     width: 34px;
   }
 
-  .square {
+  .squareWrong {
     background: rgb(219, 24, 24);
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+  }
+
+  .squareRight {
+    background: rgb(45, 130, 228);
     border: 1px solid #999;
     float: left;
     font-size: 24px;

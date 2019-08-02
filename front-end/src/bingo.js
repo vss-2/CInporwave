@@ -13,7 +13,7 @@ import axios from 'axios';
   }*/
   function Square (props) {
       return (
-          <button className = "square" onClick={props.onClick}>
+          <button className = "square" onClick={props.onClick} id = {props.id}>
               {props.value}
           </button>
       );
@@ -22,7 +22,7 @@ import axios from 'axios';
   class Board extends React.Component {
       
     renderSquare(i) {
-        return <Square value = {this.props.squares[i]} onClick={() => this.props.onClick(i)}/>;
+        return <Square value = {this.props.squares[i]} onClick={() => this.props.onClick(i)} id = {this.props.id}/>;
     }
   
     render() {
@@ -174,12 +174,14 @@ class Game extends React.Component {
         //    status = 'Winner: ' + winner; 
         //} 
         
+        let squareState = "square";
         return (
         <div className="game">
           <div className="game-board">
             <Board
                 squares = {square}
                 onClick = {(i) => this.handleClick(i)}
+                id = {squareState}
             />
           </div>
           <div className="game-info">
