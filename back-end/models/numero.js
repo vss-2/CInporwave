@@ -47,7 +47,7 @@ function getNumero(){
 }
 
 
-async function getNumero2(){
+ function getNumero2(){
     let numero = 10
 
     const client = new textToSpeech.TextToSpeechClient();
@@ -65,14 +65,16 @@ async function getNumero2(){
   };
 
   // Performs the Text-to-Speech request
-  const [response] = await client.synthesizeSpeech(request);
+  const [response] =  client.synthesizeSpeech(request);
+  .then(response)
   // Write the binary audio content to a local file
   const writeFile = util.promisify(fs.writeFile);
-  await writeFile('output.mp3', response.audioContent, 'binary');
+   writeFile('output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
 
 }
 
 module.exports = {
-    getNumero
+    getNumero,
+    getnumero2
 }
