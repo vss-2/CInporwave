@@ -91,4 +91,4 @@ module.exports = {
     main
 }
 //colocar esse caminho na path pra rodar o servidor
-//export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Desktop/apitts.json"
+//export GOOGLE_APPLICATION_CREDENTIALS="/home/ze/Desktop/apitts.json"

@@ -91,6 +91,7 @@ class Game extends React.Component {
                 this.setState({
                     squares: result.tabela
                 });
+                console.log(result.tabela)
         })
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)});
     }
@@ -100,6 +101,7 @@ class Game extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
+                console.log(result.tabela)
                 let aux = Array(25).fill(null);
                 for (let k = 0; k < 25; k ++) {
                     aux[k] = result.usados[k];
@@ -151,17 +153,17 @@ class Game extends React.Component {
     
     componentDidMount () {
         if (localStorage.getItem('cartela')) {
-            this.setState({
-                squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                18, 19, 20, 21, 22, 23, 24, 25]
-            });
+            // this.setState({
+            //     squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+            //     18, 19, 20, 21, 22, 23, 24, 25]
+            // });
             this.getCartela();
         } else {
             localStorage.setItem('cartela', true);
-            this.setState({
-                squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                18, 19, 20, 21, 22, 23, 24, 25]
-            });
+            // this.setState({
+            //     squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+            //     18, 19, 20, 21, 22, 23, 24, 25]
+            // });
             this.init();
         }
     }
