@@ -12,7 +12,7 @@ const auxCartela = {
                 [0,0,0,0,0],
                 [0,0,0,0,0],
                 [0,0,0,0,0],
-                [0,0,0,0,0]  ]
+                [0,0,0,0,0]  ],
 }
 
 let myCartela = auxCartela
