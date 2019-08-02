@@ -1,7 +1,7 @@
 let express = require("express")
 let router = express.Router()
 //let cartelaModel = require("../models/cartela")
-//let numeroModel = require("../models/numero")
+let numeroModel = require("../models/numero")
 let cartelaUniModel = require("../models/cartelaUni")
 
 router.get("/", function (req, res) {
