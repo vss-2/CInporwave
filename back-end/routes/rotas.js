@@ -1,6 +1,7 @@
 let express = require("express")
 let router = express.Router()
 let cartelaModel = require("../models/cartela")
+let numeroModel = require("../models/numero")
 
 router.get("/", function (req, res) {
     res.send(cartelaModel.getCartela())//criar nova cartela
@@ -27,6 +28,9 @@ router.put("/", function (req, res) {//atualizar arary de pintados da cartela pr
     }
 })
 
+router.get("/numero", function(req,res){
+    res.send(numeroModel.getNumero())//pegar um numero na base64
+})
 
 
 module.exports = router;

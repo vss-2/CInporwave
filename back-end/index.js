@@ -4,11 +4,11 @@ let bodyParser = require("body-parser")
 let app = express()
 let PORT = 3333
 
-let cartelaRoutes = require("./routes/cartela")
+let Routes = require("./routes/rotas")
 
 app.use(bodyParser.json())
 
-app.use("/cartelas", cartelaRoutes)
+app.use("/cartelas", Routes)
 
 app.listen(PORT, function() {
     console.log("Running app on port " + PORT)
