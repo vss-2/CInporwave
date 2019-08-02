@@ -34,6 +34,34 @@ function shuffleArray(array) {
     }
 }
 
+function createCartela5por5(){
+    let qlinhas = 5
+   let qcolunas = 5
+    let numbers=[]
+   for(let i=0;i<100;i++)numbers.push(i)
+   let newCartela=[]
+   for(let i=0;i<qlinhas;i++){
+       let linha=[]
+       for(let j=0;j<qcolunas;j++){
+           shuffleArray(numbers)
+           linha.push(numbers.pop())
+        }
+        newCartela.push(linha)
+    }
+    
+    let newUsados=[]
+    let aux = []
+    for(let i=0;i<qcolunas;i++) aux.push(0)
+    for(let i=0;i<qlinhas;i++) newUsados.push(aux)
+   
+    myCartela.qlinhas = qlinhas
+    myCartela.qcolunas = qcolunas
+    myCartela.tabela = newCartela
+    myCartela.usados = newUsados
+    return myCartela
+}
+
+
 function createCartela(){//gerar randomicamente uma nova
    let qlinhas = 0
    let qcolunas = 0
@@ -85,6 +113,7 @@ function updateCartela(linha, coluna, num){
 
 module.exports = {
     createCartela,
+    createCartela5por5,
     updateCartela,
     getCartela
 }

@@ -8,7 +8,8 @@ router.get("/", function (req, res) {
 })
 
 router.get("/novacartela", function (req, res) {
-    res.send(cartelaModel.createCartela())//criar nova cartela
+    //res.send(cartelaModel.createCartela())//criar nova cartela aleatoria
+    res.send(cartelaModel.createCartela5por5())//cria uma fixa de 5x5
 })
 
 router.put("/", function (req, res) {//atualizar arary de pintados da cartela pra cada clique
