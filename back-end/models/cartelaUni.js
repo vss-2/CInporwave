@@ -1,15 +1,25 @@
 let axios = require("axios")
+let numeroModel = require("./numero")
 
 const cartelaUnidimendional = {
-    "tamanho":9,
-    "tabela":[1,2,3,4,5,6,7,8,9],
-    "usados":[0,0,0,0,0,0,0,0,0]
+    "tamanho":25,
+    "tabela":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25  ],
+    "usados":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 }
 
 
-let myCartela = cartelaUnidimendional
+let myCartela ={
 
+}
+myCartela.tamanho=0
+myCartela.tabela=[]
+myCartela.usados=[]
+let boleono = 0
 function getCartela(){
+    if(boleono==0)myCartela = createCartela25()
+    boleono=1
+    // console.log("myCartela",myCartela)
+    // console.log("cartelaUnidimendional",cartelaUnidimendional)
     return myCartela
 }
 
@@ -67,10 +77,11 @@ function createCartela(tamanho){
 function createCartela25(){
     return createCartela(25)
 }
-
-function updateCartela(pos , num){
-    if( pos <= myCartela.tamanho && pos>=0){//indice valido
-        if(myCartela.usados[pos]==0 && myCartela.tabela[pos]==num){
+//createCartela25()
+function updateCartela(pos){
+    if(pos==null) return false
+    if( pos < myCartela.tamanho && pos>=0){//indice valido
+        if(myCartela.usados[pos]==0 && myCartela.tabela[pos]==myCartela.tabela[pos]){
             console.log("acertou")
             myCartela.usados[pos]=1
             console.log("posicao",pos,"foi atualizada")
@@ -86,5 +97,6 @@ module.exports = {
     createCartela25,
     createCartelaRnd,
     updateCartela,
-    getCartela
+    getCartela,
+    shuffleArray
 }

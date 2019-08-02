@@ -1,32 +1,30 @@
 // Imports the Google Cloud client library.
-const {Storage} = require('@google-cloud/storage');
+// const {Storage} = require('@google-cloud/storage');
 
-// Instantiates a client. If you don't specify credentials when constructing
-// the client, the client library will look for credentials in the
-// environment.
-const storage = new Storage();
+// // Instantiates a client. If you don't specify credentials when constructing
+// // the client, the client library will look for credentials in the
+// // environment.
+// const storage = new Storage();
 
-// Makes an authenticated API request.
-storage
-  .getBuckets()
-  .then(results => {
-    const buckets = results[0];
+// // Makes an authenticated API request.
+// storage
+//   .getBuckets()
+//   .then(results => {
+//     const buckets = results[0];
 
-    console.log('Buckets:');
-    buckets.forEach(bucket => {
-      console.log(bucket.name);
-    });
-  })
-  .catch(err => {
-    console.error('ERROR:', err);
-  });
-
-
+//     console.log('Buckets:');
+//     buckets.forEach(bucket => {
+//       console.log(bucket.name);
+//     });
+//   })
+//   .catch(err => {
+//     console.error('ERROR:', err);
+//   });
 
 
-
-let axios = require("axios")
-let cartelaModel = require("../models/cartela")
+  
+let cartelaUniModel = require("./cartelaUni")
+let LASTNUM=0
 
 /**
  * Copyright 2018, Google, Inc.
@@ -57,14 +55,22 @@ async function main() {
   // Creates a client
   const client = new textToSpeech.TextToSpeechClient();
 
-  // The text to synthesize
-  const text = 'Hello, world!';
+  let tabela = cartelaUniModel.getCartela().tabela.slice()
+  cartelaUniModel.shuffleArray(tabela)
+  console.log("original",cartelaUniModel.getCartela().tabela)
+  console.log("shuffled",tabela)
 
+  // The text to synthesize
+  const text = tabela[tabela.length-1];
+  LASTNUM=text //salva pra comparacao pelo update do cartela uni
+ 
+ 
+  console.log(text)
   // Construct the request
   const request = {
     input: {text: text},
     // Select the language and SSML Voice Gender (optional)
-    voice: {languageCode: 'en-US', ssmlGender: 'NEUTRAL'},
+    voice: {languageCode: 'pt-BR', ssmlGender: 'MALE'},
     // Select the type of audio encoding
     audioConfig: {audioEncoding: 'MP3'},
   };
@@ -73,8 +79,10 @@ async function main() {
   const [response] = await client.synthesizeSpeech(request);
   // Write the binary audio content to a local file
   const writeFile = util.promisify(fs.writeFile);
+  console.log(response.audioContent)
   await writeFile('output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
+  ////retornar audio em base 64 aqui
 }
 // [END tts_quickstart]
 main().catch(console.error);
@@ -82,3 +90,5 @@ main().catch(console.error);
 module.exports = {
     main
 }
+//colocar esse caminho na path pra rodar o servidor
+//export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Desktop/apitts.json"

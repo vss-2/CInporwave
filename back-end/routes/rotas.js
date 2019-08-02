@@ -37,9 +37,8 @@ router.get("/novacartela", function (req, res) {
 router.put("/", function (req, res) {//atualizar arary de pintados da cartela pra cada clique
     let body = req.body//recebe um body={"pos":0,"Numero":1   }
     let pos = body.pos
-    let num = body.Numero
-    if (pos!=null && num!=null) {
-        let acertou = cartelaUniModel.updateCartela(pos,num)//retorna true se acertou o numero
+    if (pos!=null) {
+        let acertou = cartelaUniModel.updateCartela(pos)//retorna true se acertou o numero
         if(acertou) res.send({message: "Acertou"})
         else{
             res.send({ message: "Errou" })
