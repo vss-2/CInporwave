@@ -32,6 +32,10 @@
   }
 }
 
+a {
+  color:black;
+  text-decoration: none;
+}
 
 * {
   box-sizing: border-box;
@@ -41,7 +45,7 @@ body {
   transition: all 1.2s ease;
   animation: me-pinte 5s infinite;
   background: #F4067E;
-  font-family: 'segoe ui';
+  font-family: 'Montserrat';
 }
 
 @keyframes me-pinte {
@@ -84,7 +88,7 @@ body {
 .nav > .nav-header > .nav-title {
   display: inline-block;
   font-size: 22px;
-  color: #fff;
+  color: #4d4d4d;
   padding: 10px 10px 10px 10px;
 }
 
@@ -114,10 +118,16 @@ body {
 }
 
 @media (max-width:600px) {
+  
+  .dropdownMenu > .dropdownBotao {
+    background-color: #333;
+    height: 50px;
+  }
+
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
-    right: 0px;
+    left: 0px;
     top: 0px;
   }
   .nav > .nav-btn > label {
@@ -157,4 +167,42 @@ body {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
+}
+
+.dropdownBotao {
+  font-size: 18px;
+  color: white;
+  border: none;
+  background-color: #4d4d4d;
+}
+
+.dropdownMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownConteudo {
+  display: none;
+  text-decoration-line: none;
+  position: relative;
+  min-height: 10px;
+  z-index: 1;
+}
+
+.dropdownConteudo a {
+  animation: me-pinte 5s infinite;
+  min-height: 800px;
+  background-color: white;
+}
+
+.dropdownConteudo a:hover {
+  
+}
+
+.dropdownMenu:hover .dropdownConteudo {
+  display: block;
+}
+
+.dropdown:hover .dropdownBotao {
+  background-color: #4d4d4d;
 }
