@@ -89,9 +89,7 @@ class Game extends React.Component {
         .then(
             (result) => {
                 this.setState({
-                    history: [{
-                        squares: result.tabela
-                    }],
+                    squares: result.tabela
                 });
         })
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)});
@@ -102,10 +100,13 @@ class Game extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
+                let aux = Array(25).fill(null);
+                for (let k = 0; k < 25; k ++) {
+                    aux[k] = result.usados[k];
+                }
                 this.setState({
-                    history: [{
-                        squares: result.tabela
-                    }],
+                    squares: result.tabela,
+                    squareColor: aux
                 });
         })
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)})
@@ -128,15 +129,15 @@ class Game extends React.Component {
         const squares = this.state.squares.slice();
         const SquareCor = this.state.squareColor.slice();
         
-        /*if (/*calculateWinner(squares) || squares[i]) { MUDAR para não apertar botão já pressionado
+        if (SquareCor[i] === 'squareRight') { //Não seleciona quadrado que foi clicado corretamente
             return;
-        }*/
+        }
 
-        //let cartela = this.updateCartela();
-        //if (cartela === 'Errou') {
-        //    alert("Tente novamente :(");
-        //    return;
-        //} else if (cartela === 'Acertou') {
+        let cartela = this.updateCartela();
+        if (cartela === 'Errou') {
+            alert("Tente novamente :(");
+            return;
+        } else if (cartela === 'Acertou') {
             //squares[i] = this.state.xIsNext? 'X' : 'O';
             SquareCor[i] = 'squareRight'
             this.setState({
@@ -144,24 +145,24 @@ class Game extends React.Component {
                 acerto: 'squareRight',
                 squareColor: SquareCor
             });
-        //}
+        }
     }
 
     
     componentDidMount () {
         if (localStorage.getItem('cartela')) {
-            this.getCartela();
             this.setState({
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25]
             });
+            this.getCartela();
         } else {
             localStorage.setItem('cartela', true);
-            //this.init();
             this.setState({
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25]
             });
+            this.init();
         }
     }
 
@@ -199,25 +200,3 @@ class Game extends React.Component {
   export default Game;
   // ========================================
   
-  
-
-  
-  /*function calculateWinner (squares) {
-      const lines = [
-          [0, 1, 2],
-          [3, 4, 5],
-          [6, 7, 8],
-          [0, 3, 6],
-          [1, 4, 7],
-          [2, 5, 8],
-          [0, 4, 8],
-          [2, 4, 6],
-      ];
-      for (let i = 0; i < lines.length; i ++) {
-          const [a, b, c] = lines[i];
-          if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-              return squares[a];
-          }
-      }
-      return null;
-  }*/
