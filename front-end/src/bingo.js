@@ -129,15 +129,15 @@ class Game extends React.Component {
         const squares = this.state.squares.slice();
         const SquareCor = this.state.squareColor.slice();
         
-        if (SquareCor[i] === 'squareRight') { //Não seleciona quadrado que foi clicado corretamente
-            return;
-        }
+        //if (SquareCor[i] === 'squareRight') { //Não seleciona quadrado que foi clicado corretamente
+        //    return;
+        //}
 
-        let cartela = this.updateCartela(i);
-        if (cartela === 'Errou') {
-            alert("Tente novamente :(");
-            return;
-        } else if (cartela === 'Acertou') {
+        //let cartela = this.updateCartela(i);
+        //if (cartela === 'Errou') {
+        //    alert("Tente novamente :(");
+        //    return;
+        //} else if (cartela === 'Acertou') {
             //squares[i] = this.state.xIsNext? 'X' : 'O';
             SquareCor[i] = 'squareRight'
             this.setState({
@@ -145,7 +145,7 @@ class Game extends React.Component {
                 acerto: 'squareRight',
                 squareColor: SquareCor
             });
-        }
+        //}
     }
 
     
@@ -155,14 +155,14 @@ class Game extends React.Component {
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25]
             });
-            this.getCartela();
+            //this.getCartela();
         } else {
             localStorage.setItem('cartela', true);
             this.setState({
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25]
             });
-            this.init();
+            //this.init();
         }
     }
 

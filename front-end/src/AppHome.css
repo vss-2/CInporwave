@@ -41,29 +41,16 @@ a {
   box-sizing: border-box;
 }
 
+h1 {
+  color: #923a3f;
+  text-decoration: none;
+}
+
 body {
   transition: all 1.2s ease;
   animation: me-pinte 5s infinite;
-  background: #F4067E;
+  background: rgb(153, 245, 48);
   font-family: 'Montserrat';
-}
-
-@keyframes me-pinte {
-  0% {
-    background: #FF50A1;
-  }
-  25% {
-    background: #F4067E;
-  }
-  50% {
-    background: #32006C;
-  }
-  75% {
-    background: #D75EAD;
-  }
-  100% {
-    background: #F4CEE3;
-  }
 }
 
 .meioTela {

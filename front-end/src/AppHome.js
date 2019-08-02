@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-//import './AppHome.css';
-//import './indexHome.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import './AppHome.css';
+import './indexHome.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Bingo from './bingo.js';
 
 
@@ -11,12 +11,15 @@ class AppHome extends Component {
     return (
       <Router>
       <div className="nav">
+
+
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
           <div className="nav-title">
             *
           </div>
         </div>
+
         <div className="nav-btn">
           <label htmlFor="nav-check">
             <span />
@@ -24,24 +27,39 @@ class AppHome extends Component {
             <span />
           </label>
         </div>
+
+
          <div className="nav-links">
-          <a href="" target="_blank">Home</a>
+
+          <a href="/">Home</a>
           <div className="dropdownMenu">
+
+
             <button className="dropdownBotao"> Atividades</button>
-            <div className="dropdownConteudo">
+            <ul className="dropdownConteudo">
+              <li></li>
+              <li><Link to ={'/bingo'}>Bingo</Link></li>
+              <li></li>
               <a href="" target="_blank"> Português </a>
               <a href="" target="_blank"> Matemática </a>
-              <a>
+              <Switch>
                 <Route path="/bingo" component={Bingo}/>
-              </a>
+              </Switch>
               <a href="" target="_blank"> Memória </a>
-            </div>
+            </ul>
+
+
           </div>
-          <a href="" target="_blank">Configurações</a>
+
           <a href="" target="_blank">Sobre nós</a>
+
+
         </div>
+
         <div className="meioTela">
-          <a>CInporwave</a>
+          <h1>Adoleta</h1>
+
+
         </div>
 
       </div>
