@@ -1,12 +1,11 @@
-
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './index.css';
 
 class App extends Component {
   render() {
     return (
-
       <div className="nav">
         <input type="checkbox" id="nav-check" />
         <div className="nav-header">
@@ -25,6 +24,9 @@ class App extends Component {
           <a href="" target="_blank">Atividades</a>
           <a href="" target="_blank">Configurações</a>
           <a href="" target="_blank">Sobre nós</a>
+        </div>
+        <div className="meioTela">
+          <a>CInporwave</a>
         </div>
       </div>
     );
