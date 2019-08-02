@@ -1,46 +1,60 @@
-const textToSpeech = require('@google-cloud/text-to-speech');
-const fs = require('fs');
-const util = require('util');
+// Imports the Google Cloud client library.
+const {Storage} = require('@google-cloud/storage');
+
+// Instantiates a client. If you don't specify credentials when constructing
+// the client, the client library will look for credentials in the
+// environment.
+const storage = new Storage();
+
+// Makes an authenticated API request.
+storage
+  .getBuckets()
+  .then(results => {
+    const buckets = results[0];
+
+    console.log('Buckets:');
+    buckets.forEach(bucket => {
+      console.log(bucket.name);
+    });
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
+
+
+
+
+
 let axios = require("axios")
 let cartelaModel = require("../models/cartela")
 
-// Import other required libraries
+/**
+ * Copyright 2018, Google, Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+// [START tts_quickstart]
 // Imports the Google Cloud client library
 const textToSpeech = require('@google-cloud/text-to-speech');
+
+// Import other required libraries
 const fs = require('fs');
 const util = require('util');
+
 async function main() {
   // Creates a client
-
-  
-}
-
-
-
-function getNumero(){
-    let number = -1;
-    /*axios.defaults.headers.common['Authorization'] = 'Bearer ya29.Gl9YB0QMhx4vAtEuTg1y0TrGEWxnMuNsBnS1lhtNiAKP0aWRzPMptU0rQd_Cwx2Sz-j-AMyaGX5AzyxrphKSJzYe84ttZXss17W9Rxx19lw7jSRIktpIRMCbQPbJQBdH76w';
-    axios.post("https://content-texttospeech.googleapis.com/v1/text:synthesize?key=AIzaSyCXd3M-Cb0KvyBMKTNS23nfaoiez6151Go&alt=json",{
-        "audioConfig": {
-         "audioEncoding": "LINEAR16",
-         "pitch": 0,
-         "speakingRate": 1
-        },
-        "input": {
-         "text": "1 2 3 4 5 6 7 8 9"
-        },
-        "voice": {
-         "languageCode": "pt-BR"
-        }
-    })
-    .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    */
-   // Creates a client
   const client = new textToSpeech.TextToSpeechClient();
 
   // The text to synthesize
@@ -50,58 +64,21 @@ function getNumero(){
   const request = {
     input: {text: text},
     // Select the language and SSML Voice Gender (optional)
-    voice: {languageCode: 'pt-BR', ssmlGender: 'NEUTRAL'},
+    voice: {languageCode: 'en-US', ssmlGender: 'NEUTRAL'},
     // Select the type of audio encoding
     audioConfig: {audioEncoding: 'MP3'},
   };
 
   // Performs the Text-to-Speech request
-  const [response] = client.synthesizeSpeech(request)
-  .then(responses => {
-      var response = responses[0];
-      // doThingsWith(response)
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+  const [response] = await client.synthesizeSpeech(request);
   // Write the binary audio content to a local file
   const writeFile = util.promisify(fs.writeFile);
-    writeFile('output.mp3', response.audioContent, 'binary');
-  console.log('Audio content written to file: output.mp3');    
-    
-    return number;
-}
-
-
- function getNumero2(){
-    let numero = 10
-
-    const client = new textToSpeech.TextToSpeechClient();
-
-  // The text to synthesize
-  const text = toString(numero);
-
-  // Construct the request
-  let request = {
-    input: {text: text},
-    // Select the language and SSML Voice Gender (optional)
-    voice: {languageCode: 'pt-BR', ssmlGender: 'NEUTRAL'},
-    // Select the type of audio encoding
-    audioConfig: {audioEncoding: 'MP3'},
-  };
-
-  // Performs the Text-to-Speech request
-  const [response] =  client.synthesizeSpeech(request);
-  .then(response)
-  // Write the binary audio content to a local file
-  const writeFile = util.promisify(fs.writeFile);
-   writeFile('output.mp3', response.audioContent, 'binary');
+  await writeFile('output.mp3', response.audioContent, 'binary');
   console.log('Audio content written to file: output.mp3');
-
 }
+// [END tts_quickstart]
+main().catch(console.error);
 
 module.exports = {
-    getNumero,
-    getnumero2
+    main
 }

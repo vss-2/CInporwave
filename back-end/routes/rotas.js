@@ -50,7 +50,7 @@ router.put("/", function (req, res) {//atualizar arary de pintados da cartela pr
 })
 
 router.get("/numero", function(req,res){
-    res.send(numeroModel.getNumero())//pegar um numero na base64
+    res.send(numeroModel.main())//pegar um numero na base64
 })
 
 
