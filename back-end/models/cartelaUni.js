@@ -81,7 +81,7 @@ function createCartela25(){
 function updateCartela(pos){
     if(pos==null) return false
     if( pos < myCartela.tamanho && pos>=0){//indice valido
-        if(myCartela.usados[pos]==0 && myCartela.tabela[pos]==myCartela.tabela[pos]){
+        if(myCartela.usados[pos]==0 && myCartela.tabela[pos]==numeroModel.LASTNUM){
             console.log("acertou")
             myCartela.usados[pos]=1
             console.log("posicao",pos,"foi atualizada")
