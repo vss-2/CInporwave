@@ -25,7 +25,7 @@ int main(){
 Front-End | Back-End
 --------- | --------
 Identidade visual | ~~Firebase~~
-Home (Navbar, Login) | API de áudio
+Home (Navbar, Login) | ~~API de áudio~~
 Menu com: | Enviar nº cartela
 Atividades, configurações | Enviar nº do bingo
 Sobre nós | ~~Armazenar marcados cartela~~
