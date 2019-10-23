@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState, useEffect }  from 'react';
 import './bingo.css';
 import axios from 'axios';
 
@@ -71,19 +71,12 @@ import axios from 'axios';
 }
 
 
-class Game extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            squares: Array(25).fill(null), 
-            acerto: 'square',
-            squareColor: Array(25).fill('square'),
-        };
-    }
+export default function Game() {
+    const [squares, setSquares] = useState([]);
+    const [acerto,setAcerto] = useState('square');
+    const [squareColor] = useState([square]) 
 
-    
-
-    init () {
+    function init () {
         axios.get('http://localhost:3333/cartelas/novacartela')
         .then(res => res.json())
         .then(
@@ -96,7 +89,7 @@ class Game extends React.Component {
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)});
     }
 
-    getCartela () {
+    function getCartela () {
         axios.get('http://localhost:3333/cartelas')
         .then(res => res.json())
         .then(
@@ -114,7 +107,7 @@ class Game extends React.Component {
         .catch(error => {alert("Falha ao carregar"); console.log(error.response)})
     }
 
-    updateCartela(position) {
+    function updateCartela(position) {
         axios.put('http://localhost:3333/cartelas', {
             pos: position
         })
@@ -127,7 +120,7 @@ class Game extends React.Component {
         });
     }
 
-    handleClick(i) {
+    function handleClick(i) {
         const squares = this.state.squares.slice();
         const SquareCor = this.state.squareColor.slice();
         
@@ -150,8 +143,7 @@ class Game extends React.Component {
         //}
     }
 
-    
-    componentDidMount () {
+    useEffect(() => {
         if (localStorage.getItem('cartela')) {
             this.setState({
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
@@ -164,11 +156,12 @@ class Game extends React.Component {
                 squares: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25]
             });
-            //this.init();
+            this.init();
         }
-    }
+      }, []);
 
-    render() {
+    return {
+
         const square = this.state.squares.slice();
         //const current = history[this.state.stepNumber];
         //const winner = calculateWinner(current.squares);
